@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমাদের ভালোবাসার মহাকাব্য ❤️</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&family=Great+Vibes&display=swap" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+
+    <style>
+        :root {
+            --primary-red: #d63031;
+            --soft-rose: #fd79a8;
+            --elegant-pink: #f8a5c2;
+            --glass: rgba(255, 255, 255, 0.95);
+            --bg-gradient: linear-gradient(135deg, #fff5f6 0%, #ffe4e6 100%);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background: var(--bg-gradient);
+            color: #2d3436;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        /* Floating Hearts Animation */
+        .heart-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .heart { position: absolute; font-size: 20px; color: var(--primary-red); opacity: 0.3; animation: floatUp 8s linear infinite; }
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+
+        .container { max-width: 950px; margin: 0 auto; padding: 20px; position: relative; z-index: 10; }
+
+        /* Sound Control Floating Button */
+        .sound-toggle {
+            position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px;
+            background: var(--primary-red); color: white; border: none; border-radius: 50%;
+            font-size: 25px; cursor: pointer; z-index: 1000; display: flex;
+            align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: 0.3s;
+        }
+        .sound-toggle:active { transform: scale(0.9); }
+
+        /* Clock and Live Counter */
+        .live-info {
+            text-align: center; margin-bottom: 20px; font-weight: 600; color: var(--primary-red);
+            background: var(--glass); padding: 10px 20px; border-radius: 50px; display: inline-block;
+            left: 50%; transform: translateX(-50%); position: relative; font-size: 14px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center; padding: 80px 20px;
+            background: var(--glass); backdrop-filter: blur(15px);
+            border-radius: 50px; border: 2px solid rgba(255,255,255,0.6);
+            box-shadow: 0 20px 50px rgba(214, 48, 49, 0.1); margin-bottom: 60px;
+        }
+        .hero h1 { font-family: 'Great Vibes', cursive; font-size: 5rem; color: var(--primary-red); margin-bottom: 10px; }
+        .counter-box { font-size: 24px; font-weight: 700; color: #444; margin-top: 15px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .counter-item { background: #fff; padding: 10px 25px; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #eee; }
+
+        /* Story Chapters */
+        .chapter {
+            background: var(--glass); padding: 50px; border-radius: 40px;
+            margin-bottom: 50px; box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            border-left: 10px solid var(--primary-red);
+        }
+        .chapter-header {
+            font-family: 'Playfair Display', serif; font-size: 32px;
+            color: var(--primary-red); margin-bottom: 30px; text-align: center; font-weight: 700;
+        }
+        .chapter p { font-size: 20px; color: #3e0a0a; text-align: justify; margin-bottom: 25px; font-weight: 500; }
+        .highlight { color: var(--primary-red); font-weight: 800; background: #ffeef2; padding: 2px 8px; border-radius: 5px; }
+
+        /* Photo Swiper (Coverflow Style) */
+        .section-title { text-align: center; font-size: 36px; margin: 60px 0 30px; color: #2d3436; font-family: 'Playfair Display', serif; font-weight: 700; }
+        .photoSwiper { width: 100%; padding-top: 50px; padding-bottom: 50px; }
+        .photoSwiper .swiper-slide { background-position: center; background-size: cover; width: 320px; height: 450px; border-radius: 30px; overflow: hidden; border: 8px solid #fff; box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
+        .photoSwiper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Video Swiper (Reels Style) */
+        .video-container { width: 100%; max-width: 380px; margin: 0 auto; position: relative; }
+        .video-slide {
+            background: #000; border-radius: 35px; overflow: hidden; border: 6px solid #fff;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2); position: relative; aspect-ratio: 9 / 16;
+        }
+        .video-slide video { width: 100%; height: 100%; object-fit: cover; }
+        .video-caption {
+            position: absolute; bottom: 0; left: 0; width: 100%; text-align: center;
+            color: white; background: rgba(0,0,0,0.6); padding: 15px 0; font-size: 16px;
+            font-weight: 600; backdrop-filter: blur(5px);
+        }
+
+        /* Commitments Section */
+        .promise-card {
+            background: white; padding: 25px 35px; border-radius: 25px;
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 20px; border-right: 8px solid var(--soft-rose);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+        }
+        .wa-send-btn { background: #25d366; color: white; border: none; width: 55px; height: 55px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 26px; }
+        .btn-grand { width: 100%; padding: 25px; background: linear-gradient(45deg, #d63031, #ff7675); color: white; border: none; border-radius: 30px; font-size: 26px; font-weight: 800; margin-top: 30px; cursor: pointer; }
+
+        /* Footer */
+        .footer { text-align: center; padding: 100px 20px; margin-top: 100px; background: white; border-radius: 100px 100px 0 0; border-top: 5px solid var(--elegant-pink); }
+        .signature { font-family: 'Great Vibes', cursive; font-size: 45px; color: var(--primary-red); margin-top: 15px; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3.5rem; }
+            .chapter { padding: 30px; }
+            .chapter p { font-size: 18px; }
+            .photoSwiper .swiper-slide { width: 260px; height: 350px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sound Control Button -->
+    <button class="sound-toggle" id="soundToggle" title="সাউন্ড অন/অফ">🔇</button>
+
+    <div class="heart-bg" id="heartBg"></div>
+
+    <div class="container">
+        
+        <div class="live-info">
+            📅 <span id="liveDate"></span> | ⏰ <span id="liveTime"></span>
+        </div>
+
+        <div class="hero">
+            <div style="background: var(--primary-red); color: white; display: inline-block; padding: 8px 25px; border-radius: 50px; margin-bottom: 15px; font-weight: 700;">👑 ১ বছর ৭ মাসের রাজকীয় প্রেম 👑</div>
+            <h1>I Love You Jaan</h1>
+            <p style="font-size: 22px; color: #636e72;">আমাদের ৫৯৫ দিনের অমর উপাখ্যানের বয়স:</p>
+            <div class="counter-box" id="loveCounter"></div>
+        </div>
+
+        <!-- All Texts Story -->
+        <div class="chapter">
+            <div class="chapter-header">📖 অধ্যায় ১: শুভ সূচনা</div>
+            <p>জানো সোনা, আজ যখন পেছন ফিরে তাকাই, মনে হয় এই তো সেদিন আমরা প্রথম কথা বললাম। আজ আমাদের ভালোবাসার <span class="highlight">১ বছর ৭ মাস</span> পূর্ণ হলো। এই দীর্ঘ পথচলায় তুমি আমার জীবনকে এমনভাবে রাঙিয়েছো যা আমি কোনোদিন কল্পনাও করিনি।</p>
+            <p><span class="highlight">৫ই জুলাই ২০২৪</span>— সেই বিশেষ দিন, যেখান থেকে আমার পৃথিবীর কেন্দ্রবিন্দু হয়ে উঠলে তুমি। ইনষ্টাগ্রামের সেই প্রথম আলাপ থেকে শুরু করে আজকের এই গভীর পরিণয়, প্রতিটি মুহূর্ত আমার কাছে এক একটি অমূল্য স্মৃতি। দূরত্ব আমাদের শরীরের মাঝে থাকলেও, আমাদের মনের দূরত্ব কোনোদিনই ছিল না।</p>
+        </div>
+
+        <div class="chapter">
+            <div class="chapter-header">💓 অধ্যায় ২: তুমি আমার শেষ গন্তব্য</div>
+            <p>পৃথিবীতে হয়তো কোটি কোটি মানুষ আছে, কিন্তু আমার ওই ছোট্ট হৃদয়ে রাজত্ব করার ক্ষমতা শুধু তোমারই আছে। আমরা ঝগড়া করেছি, একে অপরের ওপর অভিমান করে কেঁদেছি, কিন্তু দিনশেষে আমরাই আবার একে অপরের আশ্রয় হয়েছি। </p>
+            <p>তোমার প্রতিটি বকুনি, তোমার ওই পাগলামি আর আমাকে আগলে রাখার ধরণ— এই সব কিছুই আমাকে বারবার নতুন করে তোমার প্রেমে ফেলে দেয়। আমি প্রতিজ্ঞা করছি, পৃথিবী উল্টে গেলেও আমি তোমার হাতটা কোনোদিনও ছাড়বো না। <b>সোনা, আমি তোমাকে আমৃত্যু এভাবেই পাগলের মতো ভালোবেসে যাবো। ❤️💍</b></p>
+        </div>
+
+        <!-- Photo Gallery (First) -->
+        <h2 class="section-title">📸 স্মৃতির রঙিন অ্যালবাম</h2>
+        <div class="swiper photoSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="1.jpg"></div>
+                <div class="swiper-slide"><img src="2.jpg"></div>
+                <div class="swiper-slide"><img src="3.jpg"></div>
+                <div class="swiper-slide"><img src="4.jpg"></div>
+                <div class="swiper-slide"><img src="5.jpg"></div>
+                <div class="swiper-slide"><img src="6.jpg"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- Video Gallery (Second) -->
+        <h2 class="section-title">🎥 আমাদের ভালোবাসা রিলস</h2>
+        <div class="video-container">
+            <div class="swiper videoSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide video-slide"><video src="1.mp4" playsinline muted loop></video><div class="video-caption">আমাদের শুরুর সেই মুহূর্ত 🌸</div></div>
+                    <div class="swiper-slide video-slide"><video src="2.mp4" playsinline muted loop></video><div class="video-caption">তোমার ওই মিষ্টি হাসি ❤️</div></div>
+                    <div class="swiper-slide video-slide"><video src="3.mp4" playsinline muted loop></video><div class="video-caption">এক চিলতে ভালোবাসা ✨</div></div>
+                    <div class="swiper-slide video-slide"><video src="4.mp4" playsinline muted loop></video><div class="video-caption">হাজারো খুনসুটি আর পাগলামি 🤪</div></div>
+                    <div class="swiper-slide video-slide"><video src="5.mp4" playsinline muted loop></video><div class="video-caption">স্মৃতির পাতায় তুমি ও আমি 📖</div></div>
+                    <div class="swiper-slide video-slide"><video src="6.mp4" playsinline muted loop></video><div class="video-caption">দূরত্বের মাঝেও গভীর টান 🫂</div></div>
+                    <div class="swiper-slide video-slide"><video src="7.mp4" playsinline muted loop></video><div class="video-caption">প্রিয় মানুষের সাথে কাটানো সময় 👑</div></div>
+                    <div class="swiper-slide video-slide"><video src="8.mp4" playsinline muted loop></video><div class="video-caption">আমাদের অগোছালো ভালোবাসা 💓</div></div>
+                    <div class="swiper-slide video-slide"><video src="9.mp4" playsinline muted loop></video><div class="video-caption">তুমি মানেই সুখের ঠিকানা 🏡</div></div>
+                    <div class="swiper-slide video-slide"><video src="10.mp4" playsinline muted loop></video><div class="video-caption">শেষ নিশ্বাস পর্যন্ত তোমারই ♾️</div></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Commitment -->
+        <div class="promise-container">
+            <h2 class="section-title">💍 হৃদয়ের চিরন্তন অঙ্গীকার</h2>
+            <div class="promise-card"><span>১. তোমার মুখে হাসি ফোটাবো আজীবন। 😊🌹</span><button class="wa-send-btn" onclick="sendToWA('প্রথম অঙ্গীকার: তোমার মুখে হাসি ফোটানোই হবে আমার জীবনের মূল লক্ষ্য। 😊🌹')">📩</button></div>
+            <div class="promise-card"><span>২. হাজারো ঝগড়ার পরেও হাতটা ধরে রাখবো। 🤝🔥</span><button class="wa-send-btn" onclick="sendToWA('দ্বিতীয় অঙ্গীকার: হাজারো ঝগড়ার পরেও তোমার হাতটা শক্ত করে ধরে রাখবো। 🤝🔥')">📩</button></div>
+            <div class="promise-card"><span>৩. সব বিপদ থেকে আগলে রাখবো। 🫂💖</span><button class="wa-send-btn" onclick="sendToWA('তৃতীয় অঙ্গীকার: পৃথিবীর সব বিপদ থেকে তোমাকে নিজের ছায়া দিয়ে আগলে রাখবো। 🫂💖')">📩</button></div>
+            <div class="promise-card"><span>৪. শেষ নিশ্বাস পর্যন্ত তোমারই থাকবো। ♾️💞</span><button class="wa-send-btn" onclick="sendToWA('চতুর্থ অঙ্গীকার: এই হৃদস্পন্দন যেদিন থেমে যাবে, সেদিন পর্যন্ত আমি শুধু তোমারই হয়ে থাকবো। ♾️💞')">📩</button></div>
+            <button class="btn-grand" onclick="sendAll()">সবগুলো অঙ্গীকার একসাথে পাঠিয়ে দাও ❤️📲</button>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <h2>Always Yours</h2>
+        <div class="signature">Forever Your Queen 👸</div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        const phone = "917557065629";
+        const startDate = new Date("2024-07-05T00:00:00");
+        let isMuted = true;
+
+        // Counter Logic
+        function updateCounter() {
+            const now = new Date();
+            let years = now.getFullYear() - startDate.getFullYear();
+            let months = now.getMonth() - startDate.getMonth();
+            let days = now.getDate() - startDate.getDate();
+            if (days < 0) { months--; const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0); days += lastMonth.getDate(); }
+            if (months < 0) { years--; months += 12; }
+            document.getElementById('loveCounter').innerHTML = `<div class="counter-item">${years} বছর</div><div class="counter-item">${months} মাস</div><div class="counter-item">${days} দিন</div>`;
+            document.getElementById('liveDate').innerText = now.toLocaleDateString('bn-BD', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            document.getElementById('liveTime').innerText = now.toLocaleTimeString('bn-BD');
+            return {years, months, days};
+        }
+        setInterval(updateCounter, 1000); updateCounter();
+
+        // Sound Toggle Logic
+        const soundBtn = document.getElementById('soundToggle');
+        soundBtn.addEventListener('click', function() {
+            isMuted = !isMuted;
+            const videos = document.querySelectorAll('video');
+            videos.forEach(v => { v.muted = isMuted; });
+            soundBtn.innerText = isMuted ? '🔇' : '🔊';
+            
+            // ইফ ইউজার ক্লিকস, ট্রাই টু প্লে দ্য কারেন্ট ভিডিও টু এনসিওর সাউন্ড ইজ অন
+            const activeSlide = vSwiper.slides[vSwiper.activeIndex];
+            const activeVideo = activeSlide.querySelector('video');
+            if (activeVideo && !isMuted) activeVideo.play();
+        });
+
+        // Photo Swiper
+        new Swiper(".photoSwiper", {
+            effect: "coverflow", grabCursor: true, centeredSlides: true, slidesPerView: "auto",
+            coverflowEffect: { rotate: 30, stretch: 0, depth: 100, modifier: 1, slideShadows: true },
+            autoplay: { delay: 3000 }, pagination: { el: ".swiper-pagination" },
+        });
+
+        // Video Swiper
+        const vSwiper = new Swiper(".videoSwiper", {
+            loop: true, pagination: { el: ".swiper-pagination", clickable: true },
+            on: {
+                init: function () { controlVideo(this); },
+                slideChange: function () { controlVideo(this); }
+            }
+        });
+
+        function controlVideo(swiper) {
+            const allVideos = document.querySelectorAll('.video-slide video');
+            allVideos.forEach(v => { v.pause(); v.currentTime = 0; });
+
+            const activeSlide = swiper.slides[swiper.activeIndex];
+            const activeVideo = activeSlide.querySelector('video');
+
+            if (activeVideo) {
+                activeVideo.muted = isMuted;
+                activeVideo.play().catch(e => { /* সাইলেন্টলি হ্যান্ডেল অটো-প্লে ব্লক */ });
+                activeVideo.onended = function() { swiper.slideNext(); };
+            }
+        }
+
+        // WhatsApp Functions
+        function sendToWA(msg) {
+            const final = `*✨ প্রিয়তম...* ✨\n\n"${msg}"\n\n*সারা জীবন এভাবেই তোমার পাশে থাকতে চাই।* 💖\n\n*ইতি— তোমারই প্রিয়তমা!* 👸`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(final)}`);
+        }
+
+        function sendAll() {
+            const d = updateCounter();
+            const final = `*📜 হৃদয়ের চিরন্তন অঙ্গীকারনামা* 💍✨\n------------------------------------\n\nপ্রিয় জানু, আজকের এই বিশেষ দিনে তোমার কাছে আমার কিছু গভীর অঙ্গীকার:\n\n📍 *প্রথম অঙ্গীকার:* তোমার মুখে হাসি ফোটানোই হবে আমার জীবনের মূল লক্ষ্য। 😊🌹\n\n📍 *দ্বিতীয় অঙ্গীকার:* হাজারো ঝগড়ার পরেও তোমার হাতটা শক্ত করে ধরে রাখবো। 🤝🔥\n\n📍 *তৃতীয় অঙ্গীকার:* পৃথিবীর সব বিপদ থেকে তোমাকে নিজের ছায়া দিয়ে আগলে রাখবো। 🫂💖\n\n📍 *চতুর্থ অঙ্গীকার:* এই হৃদস্পন্দন যেদিন থেমে যাবে, সেদিন পর্যন্ত আমি শুধু তোমারই হয়ে থাকবো। ♾️💞\n\n*আই লাভ ইউ সো মাচ জান! তুমিই আমার পৃথিবী।* ❤️😘\n\n*আমাদের পথচলার বয়স:* ${d.years} বছর, ${d.months} মাস, ${d.days} দিন।`;
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(final)}`);
+        }
+
+        // Floating Hearts
+        const heartBg = document.getElementById('heartBg');
+        for (let i = 0; i < 30; i++) {
+            const heart = document.createElement('div'); heart.className = 'heart'; heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw'; heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heartBg.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
